@@ -81,23 +81,10 @@ public class StepDefinition {
 	public void i_click_on_Login_button() throws Throwable {
 	    objLogin.clickLoginButton();
 	}
-	
-	@When("^I enter valid username \"([^\"]*)\"$")
-	public void i_enter_valid_username(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
-	}
-
-	@When("^I enter invalid password \"([^\"]*)\"$")
-	public void i_enter_invalid_password(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
-	}
 
 	@Then("^the user login should fail$")
 	public void the_user_login_should_fail() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    objLogin.verifyUserLoginFailed();
 	}
 	
 	@After

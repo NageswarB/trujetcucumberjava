@@ -36,6 +36,9 @@ public class LoginPage extends AbstractPage {
 	@FindBy(xpath = "//span[contains(text(),'Hello')]")
 	private WebElement welcomeTextLabel;
 	
+	@FindBy(css = "span#lblErrMsg")
+	private WebElement logonErrorMsgSpan;
+	
 	
 	public void checkTrujetSiteIsLaunched()throws Exception{
 		Assert.assertTrue("Trujet website not loaded properly", bookFlightTextLabel.isDisplayed());
@@ -63,6 +66,12 @@ public class LoginPage extends AbstractPage {
 	
 	public void clickLoginButton()throws Exception{
 		loginButton.click();
+	}
+	
+	public void verifyUserLoginFailed()throws Exception{
+		String expectedText = "The user login or Password you entered is incorrect.";
+		String actualErrorText = logonErrorMsgSpan.getText();
+		Assert.assertEquals("User login was successful inspite of invalid creds, please check!!!", expectedText, actualErrorText);
 	}
 	
 	public void moveToMenu(String menuName)throws Exception{

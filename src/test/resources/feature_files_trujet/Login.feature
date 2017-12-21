@@ -20,7 +20,7 @@ Feature: Check login screen fields validation of the Trujet web site
  		Given that I am on Trujet landing screen
   	When I click on "TruFliers, Login" button
    	Then I should see "Login" screen opens
-   	When I enter valid username ""
-   	When I enter invalid password ""
+   	When I enter username "${username}"
+   	When I enter password "invalidpwd"
    	When I click on Login button
    	Then the user login should fail
