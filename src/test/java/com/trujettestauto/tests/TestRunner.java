@@ -18,7 +18,7 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(monochrome = true, features = { "classpath:feature_files_trujet/" }, glue = {
-"com.trujettestauto.tests" }, tags = "@Login", plugin = { "pretty", "json:target/cucumber",
+"com.trujettestauto.tests" }, tags = "@Login", plugin = { "pretty", "html:target/cucumberreports",
 "com.cucumber.listener.ExtentCucumberFormatter" })
 public class TestRunner {
 
@@ -29,9 +29,9 @@ public class TestRunner {
 		// output/Run_<unique timestamp>/report.html file by default.
 		ExtentCucumberFormatter.initiateExtentCucumberFormatter();
 
-		// Loads the extent config xml to customize on the report.
+		/*// Loads the extent config xml to customize on the report.
 		ExtentCucumberFormatter.loadConfig(new File("src/test/resources/extent-config.xml"));
-
+*/
 		// User can add the system information as follows
 		ExtentCucumberFormatter.addSystemInfo("Selenium version", "v2.53.0");
 
