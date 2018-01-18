@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.trujettestauto.lib.AbstractPage;
@@ -69,8 +72,13 @@ public class LoginPage extends AbstractPage {
 	}
 	
 	public void verifyUserLoginFailed()throws Exception{
+		String actualErrorText = null;
+		WebDriverWait wait = new WebDriverWait(driver, 30);
 		String expectedText = "The user login or Password you entered is incorrect.";
-		String actualErrorText = logonErrorMsgSpan.getText();
+		WebElement we = wait.until(ExpectedConditions.elementToBeClickable(logonErrorMsgSpan));
+		if( we != null){
+			actualErrorText = we.getText();
+		}
 		Assert.assertEquals("User login was successful inspite of invalid creds, please check!!!", expectedText, actualErrorText);
 	}
 	
